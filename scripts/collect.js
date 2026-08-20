@@ -13,6 +13,8 @@ const http = require('http');
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
 const HTML_FILE = path.join(OUTPUT_DIR, 'index.html');
+// GitHub Pages 需要根目录的 index.html，同时输出一份到根目录
+const ROOT_HTML_FILE = path.join(__dirname, '..', 'index.html');
 
 // ============ 工具函数 ============
 function fetchText(url, options = {}) {
@@ -456,6 +458,8 @@ async function main() {
   const dateStr = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
   const html = generateHTML(top, dateStr);
   fs.writeFileSync(HTML_FILE, html, 'utf8');
+  // 同时输出到根目录（GitHub Pages 需要）
+  fs.writeFileSync(ROOT_HTML_FILE, html, 'utf8');
 
   const zhCountFinal = top.filter(it => !isEnglish(it.title)).length;
   const enCountFinal = top.filter(it => isEnglish(it.title)).length;
