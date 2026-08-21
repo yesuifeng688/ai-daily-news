@@ -1,19 +1,19 @@
 🤖 每日 AI 动态 · 2026-08-21
 
 1. CFP 开放 | KCD 杭州站邀您共议 Agent 时代的云原生、可观测与大模型推理
-2. 将Pod作为worker而非智能体：在Kubernetes上重新思考AI智能体的部署单元
+2. 展示HN：我训练了一个1.25亿参数的模型，在设备端实现钢琴自动伴奏
 3. AI Infra 正在诞生自己的石油期货？GPU 不够买之后，华尔街开始交易算力
-4. 随着AI生成的代码日益增多，GitHub Code Quality聚焦可维护性
+4. 展示HN：Huzzah——一种AI编程的新颖方法
 5. 你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践
-6. 明道云举办首届Real AI Contest，面向真实落地的企业AI应用
+6. 呕吐：用独立LLM清理Claude 5的令牌输出
 7. 蚂蚁 AI 驱动的生产级软件交付基建和实践｜AICon深圳
-8. Adobe Firefly扩充AI音频服务，可生成音乐、配音和音效
+8. 反AI字体既无用又有害
 9. AI爬虫涌入电商，安全防线正在从“拦截”转向“判断”
-10. MiniMax Design来了，视频模型也有了自己的Codex
+10. 用27美元的智能手表配合Claude进行黑客攻击
 11. OpenAI 因安全问题突然停训GPT-6！网友：当你造出一个神，就不可能再给它拴上绳子
-12. AI数据初创公司Micro1在AI训练热潮中实现5亿美元总运行率
+12. 每个模型都会作弊
 13. AI for Science进入新阶段：机器人正在成为科研新基础设施
-14. 新数据显示，OpenAI在企业用户方面正赶超Anthropic
+14. 欧盟版权法不保护AI生成内容
 15. 豆包上线侧边工作台，支持对话与操作同屏进行
 
 📄 完整榜单（Top 15）：https://yesuifeng688.github.io/ai-daily-news/
