@@ -461,6 +461,11 @@ async function main() {
   // 同时输出到根目录（GitHub Pages 需要）
   fs.writeFileSync(ROOT_HTML_FILE, html, 'utf8');
 
+  // 生成微信推送摘要文件（供 cron 任务直接读取发送，不依赖 agent 现场整理）
+  const summaryLines = top.map((it, i) => `${i + 1}. ${it.title_zh || it.title}`);
+  const summary = `🤖 每日 AI 动态 · ${dateStr}\n\n${summaryLines.join('\n')}\n\n📄 完整榜单（Top ${top.length}）：https://yesuifeng688.github.io/ai-daily-news/`;
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'summary.txt'), summary, 'utf8');
+
   const zhCountFinal = top.filter(it => !isEnglish(it.title)).length;
   const enCountFinal = top.filter(it => isEnglish(it.title)).length;
   console.log(`✅ 已生成 ${HTML_FILE}`);
