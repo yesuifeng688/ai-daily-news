@@ -33,6 +33,14 @@ function main() {
 
   console.log('🚀 开始部署到 GitHub Pages...');
 
+  // 清除代理环境变量，强制 git 直连（系统代理 127.0.0.1:7897 当前不可用会导致 SSL 失败）
+  delete process.env.HTTP_PROXY;
+  delete process.env.HTTPS_PROXY;
+  delete process.env.http_proxy;
+  delete process.env.https_proxy;
+  delete process.env.ALL_PROXY;
+  delete process.env.all_proxy;
+
   // 确保是 git 仓库
   if (!run('git rev-parse --is-inside-work-tree')) {
     console.error('❌ 不是 git 仓库');
@@ -43,9 +51,10 @@ function main() {
   run('git remote get-url origin');
 
   // 提交并推送（用 --force 覆盖，因为每天只更新网页，无协作冲突）
+  // 同时显式禁用代理，避免读到环境变量
   run('git add -A');
   run(`git commit -m "更新每日AI新闻: ${new Date().toLocaleDateString('zh-CN')}" --allow-empty`);
-  run('git push -u origin main --force');
+  run('git -c http.proxy= -c https.proxy= push -u origin main --force');
 
   console.log('✅ 部署完成！GitHub Pages 已更新');
   console.log('🌐 https://yesuifeng688.github.io/ai-daily-news/');
