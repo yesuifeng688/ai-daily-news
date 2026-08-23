@@ -1,19 +1,19 @@
-🤖 每日 AI 动态 · 2026-08-22
+🤖 每日 AI 动态 · 2026-08-23
 
-1. 明略科技携手海康机器人亮相世界机器人大会，以“Agent+具身”联合进入商业机器人场景
-2. AI companies destroy physical books – let's scan rare books before it's too late
-3. 雷鸟iO发布：两天续航、全天候主动式AI，轻至34g
-4. I'm becoming AI-blind
-5. 机器人的GPT-3时刻真·来了！卡卡西上身，看3秒就学会新动作
-6. AI boosted homework scores, then exam scores dropped: study
-7. 科学家只管提问题，AI负责跑实验：深势科技把科研全流程搬进桌面
-8. Claudette: Make Claude stop talking like a BuzzFeed article
+1. 魔法原子亮相WRC 2026，三大场景解决方案实景展示物理AI真·上岗
+2. Munder Difflin——运行你克隆人办公室的代理工具
+3. 从模型到生产力：星海图与产业朋友圈共探具身智能的下一站
+4. 钩住、持有、收割与隐藏：Meta的所谓策略在首周曝光
+5. 明略科技携手海康机器人亮相世界机器人大会，以“Agent+具身”联合进入商业机器人场景
+6. 为什么你的本地大模型感觉比实际更笨
+7. JetBrains详细阐述了控制AI支出快速增长的首批举措
+8. Anthropic似乎在A/B测试降低Claude Code的努力程度
 9. DeepSeek 发布多模态模型，“小鲸鱼”长出了眼睛
-10. Flat Chair by Sara Paculdo
+10. 早期生活压力在小鼠脑细胞中留下“疤痕”
 11. 材科源图三个月完成两轮融资，AI全链路闭环加速材料产业化
-12. How we made a text-to-speech model respond in sub-50 ms
+12. 使用Codex一周胜过Claude的体验
 13. 本地运行、支持视觉与工具调用：Meta 开源智能体模型
-14. Show HN: Shoehorn – Quantize any model down to run on your machine
+14. 泰国如何抵抗殖民统治
 15. 不跟风、不堆模型，百度靠什么突围AI办公赛道？
 
 📄 完整榜单（Top 15）：https://yesuifeng688.github.io/ai-daily-news/
