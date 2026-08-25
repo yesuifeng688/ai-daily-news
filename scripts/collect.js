@@ -108,7 +108,7 @@ function isEnglish(text) {
   return total > 0 && (letters / total) > 0.4;
 }
 
-function callDeepSeekTranslate(titles) {
+function callDeepSeekTranslateOnce(titles) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       model: 'deepseek-chat',
@@ -130,6 +130,15 @@ function callDeepSeekTranslate(titles) {
       let data = '';
       res.on('data', (c) => data += c);
       res.on('end', () => {
+        // 限流(429)或服务端错误(5xx)时抛出可重试标记
+        if (res.statusCode === 429 || (res.statusCode >= 500 && res.statusCode < 600)) {
+          reject(new Error('retryable_status_' + res.statusCode + ': ' + data.slice(0, 200)));
+          return;
+        }
+        if (res.statusCode !== 200) {
+          reject(new Error('http_' + res.statusCode + ': ' + data.slice(0, 200)));
+          return;
+        }
         try {
           const json = JSON.parse(data);
           const content = json.choices?.[0]?.message?.content || '';
@@ -145,6 +154,31 @@ function callDeepSeekTranslate(titles) {
     req.setTimeout(30000, () => { req.destroy(); reject(new Error('translate timeout')); });
     req.end(body);
   });
+}
+
+// DeepSeek 翻译带重试：429/5xx/超时/网络错误时指数退避重试，最多 3 次
+function callDeepSeekTranslate(titles) {
+  const MAX_RETRY = 3;
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  return (async () => {
+    let lastErr;
+    for (let attempt = 0; attempt <= MAX_RETRY; attempt++) {
+      try {
+        return await callDeepSeekTranslateOnce(titles);
+      } catch (e) {
+        lastErr = e;
+        const retryable = /retryable_status_|timeout|ECONNRESET|ETIMEDOUT|EAI_AGAIN|fetch failed/i.test(e.message || '');
+        if (!retryable || attempt === MAX_RETRY) {
+          if (!retryable) throw e;
+          break;
+        }
+        const delay = 5000 * Math.pow(2, attempt);
+        console.log(`⏳ DeepSeek 翻译第 ${attempt + 1} 次失败（${e.message}），${delay / 1000}s 后重试...`);
+        await sleep(delay);
+      }
+    }
+    throw lastErr;
+  })();
 }
 
 // ============ 新闻源采集 ============
