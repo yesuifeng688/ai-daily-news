@@ -1,19 +1,19 @@
 🤖 每日 AI 动态 · 2026-08-26
 
 1. 开源国产8B模型，比肩闭源Image 2了！
-2. MS Paint和照片应用即使对本地生成内容也会用GUID添加隐形水印
+2. MS Paint和照片应用即使对本地生成输出也会以GUID形式添加隐形水印
 3. 人民教育音像数字出版社与小猿达成合作 “中小学课本学习智能体”首落小猿AI学习机
-4. 若我17岁，我会学习如何从零构建LLM
+4. OpenAI Jalapeño：优于Nvidia Blackwell
 5. VC开始靠AI预测未来了
-6. OpenAI Jalapeño：比Nvidia Blackwell更胜一筹
-7. 主要前沿模型提供商采用水印技术以满足欧盟法规要求
-8. HN上有多少内容是AI生成的？
+6. HN上有多少内容是AI生成的？
+7. 主要���沿模型提供商采用水印技术以满足欧盟法规要求
+8. 训练AI用代码作画
 9. 完全相信AI代码的Uncle Bob，坦诚这条路还没走通
-10. 训练AI用代码作画
+10. Show HN：我用Qwen打造了一台树莓派本地车载AI
 11. DeepSeek 再度调价；英伟达AI服务器涨价超 15%；“AI红娘”承诺三年不结婚就退款，前 Kimi搜索负责人创业目标：拉高10%结婚率 | AI周报
-12. Show HN：我用树莓派和Qwen打造了本地车载AI
+12. AI4S开始进入「项目时代」：紫东太初把AI从做Task推向做Project
 13. 从现实到反馈：KDC 完整工程模型全景
-14. AI4S进入「项目时代」：紫东太初将AI从做Task推向做Project
+14. WAIC CONNECT | AI出海，不聊虚的！CONNECT带你拿下马来西亚真正的AI采购需求
 15. 亚马逊云科技开源 Dogwood：给 AI 智能体的工具调用立规矩
 
 📄 完整榜单（Top 15）：https://yesuifeng688.github.io/ai-daily-news/

@@ -60,6 +60,16 @@ async function sendText(baseUrl, token, to, text, contextToken) {
   });
   const raw = await res.text();
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${raw}`);
+  // 校验微信 ilink 业务码：ret=0 才代表真正发送成功（HTTP 200 可能携带业务失败）
+  try {
+    const j = JSON.parse(raw);
+    if (j && typeof j.ret === 'number' && j.ret !== 0) {
+      throw new Error(`ilink 业务失败 ret=${j.ret}, errmsg=${j.errmsg || ''}`);
+    }
+  } catch (e) {
+    if (e.message && e.message.startsWith('ilink')) throw e;
+    // 非 JSON 响应则忽略，保持原行为
+  }
   return raw;
 }
 
@@ -76,12 +86,23 @@ async function main() {
   console.log('🔑 contextToken:', contextToken ? '已获取 (len=' + contextToken.length + ')' : '缺失!');
   console.log('🔗 baseUrl:', acct.baseUrl);
 
-  if (!contextToken) {
-    console.error('❌ 无法获取 contextToken，发送失败');
-    process.exit(1);
+  let resp;
+  if (contextToken) {
+    try {
+      resp = await sendText(acct.baseUrl, acct.token, USER_ID, text, contextToken);
+    } catch (e) {
+      // contextToken 过期（prepare failed）时自动降级为无上下文发送，无需人工刷新 token
+      if (e.message.includes('prepare failed')) {
+        console.log('⚠️ contextToken 过期，自动降级为无上下文发送');
+        resp = await sendText(acct.baseUrl, acct.token, USER_ID, text, undefined);
+      } else {
+        throw e;
+      }
+    }
+  } else {
+    console.log('⚠️ contextToken 缺失，使用无上下文发送');
+    resp = await sendText(acct.baseUrl, acct.token, USER_ID, text, undefined);
   }
-
-  const resp = await sendText(acct.baseUrl, acct.token, USER_ID, text, contextToken);
   console.log('✅ 发送成功! 响应:', resp.slice(0, 200));
 }
 
