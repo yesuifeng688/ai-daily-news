@@ -1,6 +1,9 @@
 # 密钥文件（不要推送到 GitHub）
 .env
 
+# 排版方案预览（临时产物，不上线）
+preview/
+
 # Node 依赖
 node_modules/
 
